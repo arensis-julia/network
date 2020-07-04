@@ -96,16 +96,6 @@ int main(int argc, char * argv[]) {
     while((num = read(fd, buffer, MAX)) > 0)
         send(c, buffer, num, 0);
     
-    if((num = recv(c, buffer, MAX, 0)) < 0) {
-        fprintf(stderr, "[ERROR] Receive failed\n");
-        exit(-7);
-    }
-    if(strcmp(buffer, "ACK")) {
-        fprintf(stderr, "[ERROR] No ACK received\n");
-        exit(-8);
-    }
-    memset(buffer, '\0', MAX);
-    
     /* Close */
     printf("BYE!\n");
     close(fd);
