@@ -1,4 +1,4 @@
-### TCP PROTOCOL
+## TCP PROTOCOL
 - provides <span style="color:red">connection-oriented</span>, <span style="color:red">reliable</span>, <span style="color:red">byte-stream</span> service
 - **Handshaking process**: first create a <span style="color:red">logical connection</span> by exchanging connection-establishment packets
     - establishes parameters between two ends
@@ -14,7 +14,7 @@
 - e.g. file transfer applications
 
 
-### COMMUNICATION USING TCP
+## COMMUNICATION USING TCP
 ![tcp_connection](tcp_connection.jpg)
 - **Listen socket**: for listening and establishing connection from client
 - **Socket**: for exchanging data with the client
@@ -22,7 +22,7 @@
 - may use buffer with pointer to make sure the whole message is sent
 
 
-### HOW TO COMPILE & RUN
+## HOW TO COMPILE & RUN
 1. Put the file to transfer into directory 'sdir'.
 2. Create two terminal, each for server and client.
 3. For the first terminal, go into the 'sdir' directory.
