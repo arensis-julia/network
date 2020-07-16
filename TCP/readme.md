@@ -19,7 +19,7 @@
 - **Listen socket**: for listening and establishing connection from client
 - **Socket**: for exchanging data with the client
 - to seperate connection phase from the data exchange phase
-- may use buffer with pointer to make sure the whole message is sent<br /><br />
+- may use buffer with pointer to make sure the whole message is sent<br /><br /><br /><br />
 
 
 ## HOW TO COMPILE & RUN
