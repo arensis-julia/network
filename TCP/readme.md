@@ -57,3 +57,7 @@
     ./client 127.0.0.1 9999
     ```
 8. See the results.
+
+
+## CODE EXPLANATION
+When client and server are connected to each other, server will send the name of the file (set by arguments) and the file itself to client.
