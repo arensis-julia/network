@@ -11,7 +11,7 @@
 - disadvantage: not message-oriented
 - useful to send <span style="color:red">long message</span>
 - when <span style="color:red">reliability</span> may benefit
-- e.g. file transfer applications
+- e.g. file transfer applications<br /><br />
 
 
 ## COMMUNICATION USING TCP
@@ -19,7 +19,7 @@
 - **Listen socket**: for listening and establishing connection from client
 - **Socket**: for exchanging data with the client
 - to seperate connection phase from the data exchange phase
-- may use buffer with pointer to make sure the whole message is sent
+- may use buffer with pointer to make sure the whole message is sent<br /><br />
 
 
 ## HOW TO COMPILE & RUN
@@ -56,7 +56,7 @@
     // for Linux
     ./client 127.0.0.1 9999
     ```
-8. See the results.
+8. See the results.<br /><br />
 
 
 ## CODE EXPLANATION
