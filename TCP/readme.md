@@ -12,16 +12,16 @@
 - useful to send <span style="color:red">long message</span>
 - when <span style="color:red">reliability</span> may benefit
 - e.g. file transfer applications
-<br />
-<br />
+
+
 ## COMMUNICATION USING TCP
 ![tcp_connection](tcp_connection.jpg)
 - **Listen socket**: for listening and establishing connection from client
 - **Socket**: for exchanging data with the client
 - to seperate connection phase from the data exchange phase
 - may use buffer with pointer to make sure the whole message is sent
-<br />
-<br />
+
+
 ## HOW TO COMPILE & RUN
 1. Put the file to transfer into directory 'sdir'.
 2. Create two terminal, each for server and client.
@@ -57,7 +57,7 @@
     ./client 127.0.0.1 9999
     ```
 8. See the results.
-<br />
-<br />
+
+
 ## CODE EXPLANATION
 When client and server are connected to each other, server will send the name of the file (set by arguments) and the file itself to client.
