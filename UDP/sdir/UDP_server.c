@@ -22,12 +22,11 @@ int main(int argc, char * argv[]) {
     struct sockaddr_in serverAd, clientAd;
     struct dirent * entry;
     DIR * flist;
-    char * fileName;
-    char * url;
+    char * fileName, * filePath;
     char buffer[MAX] = {0, };
-    int clientLen, liveSLen;
+    int clientLen;
     int fileNum;
-    int num, num2;
+    int num, fd;
     int isNum = 0, flag = 0;
     int i = 0;
 
@@ -126,7 +125,7 @@ int main(int argc, char * argv[]) {
     if(flag == 0) {
         sendto(c, "INVALID", 8, 0, (struct sockaddr *)&clientAd, clientLen);
         printf("Invalid Request\n");
-        exit(1);
+        exit(-7);
     }
     if(isNum == 0) {
         printf("Requested File: %s\n", fileName);
@@ -134,8 +133,24 @@ int main(int argc, char * argv[]) {
     }
     closedir(flist);
 
+    if(flag) {
+        filePath = malloc(strlen("./sendingFile") + strlen(fileName) + 1);
+        strcpy(filePath, "./sendingFile/");
+        strcat(filePath, fileName);
+        if((fd = open(filePath, O_RDONLY)) < 0) {
+            fprintf(stderr, "[ERROR] File open failed\n");
+            exit(-8);
+        }
+        memset(buffer, '\0', MAX);
+        while((num = read(fd, buffer, MAX)) > 0) {
+            sendto(c, buffer, num, 0, (struct sockaddr *)&clientAd, clientLen);
+        }
+        sendto(c, "END", 4, 0, (struct sockaddr *)&clientAd, clientLen);
+    }
+
     /* Close */
     printf("BYE!\n");
+    close(fd);
     close(c);
     // WINDOW ONLY
     WSACleanup();

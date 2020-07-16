@@ -19,12 +19,11 @@ int main(int argc, char * argv[]) {
     struct sockaddr_in serverAd;
     char * serverIP;
     char * fileName;
-    char * url;
     unsigned short serverPort;
     char buffer[MAX] = {0, };
     int serverLen;
-    int num, i = 0;
-    int isNum;
+    int fd, num, i = 0;
+    int isNum = 0;
 
     /* Check arguments */
     if(argc != 3) {
@@ -89,23 +88,36 @@ int main(int argc, char * argv[]) {
     memset(buffer, '\0', MAX);
     if((num = recvfrom(c, buffer, MAX, 0, (struct sockaddr *)&serverAd, &serverLen)) < 0) {
         fprintf(stderr, "[ERROR] Receiving sign failed\n");
-        exit(1);
+        exit(-4);
     }
     if(!strcmp(buffer, "INVALID")) {
         fprintf(stderr, "Invalid Request\n");
-        exit(1);
+        exit(-5);
     }
     if(isNum == 0) {
         memset(buffer, '\0', MAX);
         if((num = recvfrom(c, buffer, MAX, 0, (struct sockaddr *)&serverAd, &serverLen)) < 0) {
             fprintf(stderr, "[ERROR] Receiving fileName failed\n");
-            exit(1);
+            exit(-6);
         }
         fileName = strdup(buffer);
         printf("Requested File: %s\n", fileName);
     }
 
+    /* Receive file */
+    if((fd = open(fileName, O_WRONLY | O_CREAT | O_TRUNC, 0755)) < 0) {
+        fprintf(stderr, "[ERROR] Open %s failed\n", fileName);
+        exit(-7);
+    }
+    memset(buffer, '\0', MAX);
+    while(strcmp(buffer, "END")) {
+        if((num = recvfrom(c, buffer, MAX, 0, (struct sockaddr *)&serverAd, &serverLen)) > 0 && strcmp(buffer, "END"))
+            write(fd, buffer, num);
+    }
+    printf("SUCCESS!\n");
+
     /* Close */
+    close(fd);
     close(c);
     // WINDOW ONLY
     WSACleanup();
