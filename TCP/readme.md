@@ -1,6 +1,6 @@
 ## TCP PROTOCOL
-- provides ```html <span style="color:red">connection-oriented</span> ```, ```html <span style="color:red">reliable</span> ```, ```html <span style="color:red">byte-stream</span> ``` service
-- **Handshaking process**: first create a ```html <span style="color:red">logical connection</span> ``` by exchanging connection-establishment packets
+- provides <em>connection-oriented</em>, <em>reliable</em>, <em>byte-stream</em> service
+- **Handshaking process**: first create a <em>logical connection</em> by exchanging connection-establishment packets
     - establishes parameters between two ends
     - size of the data packets
     - size of buffers to be used for holding the chunks of data
@@ -9,8 +9,8 @@
     - receiver can request to resend the losing bytes
 - can provide flow control & congestion control
 - disadvantage: not message-oriented
-- useful to send ```html <span style="color:red">long message</span> ```
-- when ```html <span style="color:red">reliability</span> ``` may benefit
+- useful to send <em>long message</em>
+- when <em>reliability</em> may benefit
 - e.g. file transfer applications<br /><br />
 
 
