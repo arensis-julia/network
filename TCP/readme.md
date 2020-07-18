@@ -1,6 +1,6 @@
 ## TCP PROTOCOL
-- provides <em>connection-oriented</em>, <em>reliable</em>, <em>byte-stream</em> service
-- **Handshaking process**: first create a <em>logical connection</em> by exchanging connection-establishment packets
+- provides *connection-oriented*, *reliable*, *byte-stream* service
+- **Handshaking process**: first create a *logical connection* by exchanging connection-establishment packets
     - establishes parameters between two ends
     - size of the data packets
     - size of buffers to be used for holding the chunks of data
@@ -9,8 +9,8 @@
     - receiver can request to resend the losing bytes
 - can provide flow control & congestion control
 - disadvantage: not message-oriented
-- useful to send <em>long message</em>
-- when <em>reliability</em> may benefit
+- useful to send *long message*
+- when *reliability* may benefit
 - e.g. file transfer applications<br /><br />
 
 
