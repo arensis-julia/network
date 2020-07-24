@@ -58,4 +58,4 @@
 
 
 ## CODE EXPLANATION
-When client and server are connected to each other, client will first request the FLIST (file lists) that server has. Within the file list, client will request with either number of name of the file so that the server can send the corresponding file to client.
+When client and server are connected to each other, client will first request the FLIST (file lists) that server has. Within the file list, client will request with either number or name of the file so that the server can send the corresponding file to client.
